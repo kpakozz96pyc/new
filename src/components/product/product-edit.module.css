@@ -1,0 +1,33 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.form > * {
+    margin: 0.5em auto;
+}
+
+.file-chooser-button {
+    border: 1px solid teal;
+    padding: 0.6em 2em;
+    position: relative;
+    color: teal;
+    background: none;
+}
+
+.file-input {
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.upload-button {
+    background: teal;
+    border: 1px solid teal;
+    color: #fff;
+    padding: 0.6em 2em;
+}
