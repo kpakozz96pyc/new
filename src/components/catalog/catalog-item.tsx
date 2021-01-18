@@ -1,7 +1,7 @@
 import React from "react";
 import {Product} from "../../models/product";
 
-import styles from "./catalog-item.module.css"
+import styles from "./catalog-item.module.scss"
 import {Link} from "react-router-dom";
 
 export interface CatalogItemComponentProps {

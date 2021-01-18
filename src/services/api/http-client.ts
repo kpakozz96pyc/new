@@ -26,8 +26,8 @@ export class HttpClient {
         return this.instance.get<ResponseType>(url, {params},);
     }
 
-    public post<ResponseType>(url: string, params: any) {
-        return this.instance.post<ResponseType>(url, params);
+    public post<ResponseType>(url: string, params: any, headers?: any) {
+        return this.instance.post<ResponseType>(url, params, {headers:headers});
     }
 
     public postForm<ResponseType>(url: string, form: FormData) {
