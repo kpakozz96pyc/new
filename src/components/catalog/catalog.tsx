@@ -1,6 +1,6 @@
 import React from "react";
 import {Product} from "../../models/product";
-import styles from './catalog.module.css';
+import styles from './catalog.module.scss';
 import {CatalogItemComponent} from "./catalog-item";
 
 export interface CatalogComponentProps {

@@ -16,7 +16,8 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, "build"),
-        filename: "[name].js"
+        filename: "[name].js",
+        publicPath: '/',
     },
     module: {
         rules: [
@@ -26,9 +27,22 @@ module.exports = {
             },
             {
                 test: /\.(scss|css)$/,
-                use: ['style-loader', 'css-loader', 'sass-loader'],
+                use: [
+                    'style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: true,
+                            camelCase: true
+                        },
+                    }, {
+                    loader: 'sass-loader'
+                }],
             },
         ]
+    },
+    devServer: {
+        historyApiFallback: true,
     },
     plugins: [
         new HtmlWebpackPlugin({

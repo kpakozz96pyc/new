@@ -1,5 +1,5 @@
 import React, {ChangeEvent, useCallback, useState} from "react";
-import styles from "../../components/catalog/catalog.module.css";
+import styles from "../../components/catalog/catalog.module.scss";
 import {useAppDispatch} from "../../store/app-dispatch";
 import {Actions} from "../../store/actions";
 

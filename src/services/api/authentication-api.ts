@@ -11,6 +11,9 @@ export class AuthenticationApi implements IAuthenticationApi {
     }
 
     public getToken(request : LoginRequest): Promise<LoginResponse> {
-        return this.httpClient.post<LoginResponse>('/token', request).then();
+        return this.httpClient.post<LoginResponse>(
+            '/token',
+            request,
+            {'Access-Control-Allow-Origin': '*'}).then();
     }
 }
