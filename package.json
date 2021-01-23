@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack serve",
-    "build": "webpack --config webpack.config.js"
+    "build": "webpack --config webpack.config.js",
+    "stamp": "replace-in-file GIT_STAMP $CI_COMMIT_SHORT_SHA src/index.html"
   },
   "keywords": [],
   "author": "",
@@ -39,6 +40,7 @@
     "typescript": "^4.1.3",
     "webpack": "^5.11.0",
     "webpack-cli": "^4.2.0",
-    "webpack-dev-server": "^3.11.0"
+    "webpack-dev-server": "^3.11.0",
+    "replace-in-file": "^6.1.0"
   }
 }

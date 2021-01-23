@@ -1,0 +1,45 @@
+stages:
+    - build
+    - docker-build
+build:
+    stage: build
+    image: node:10.22.1
+    tags:
+        - docker
+    cache:
+        key: ${CI_COMMIT_REF_SLUG}
+        paths:
+            - .npm/
+    script:
+        - echo "Building deploy package"
+        - npm install
+        - npm run stamp
+        - npm run build
+        - echo "Build successful"
+    artifacts:
+        expire_in: 1 hour
+        paths:
+            - build
+            - Dockerfile
+            
+docker-build:
+  stage: docker-build
+  image: docker:latest
+  tags:
+    - docker
+  services: 
+    - name: docker:19.03.8-dind
+  before_script:
+    - apk update >/dev/null
+    - apk add ca-certificates >/dev/null
+    - rm -rf /var/cache/apk/*
+
+    - cp /etc/gitlab-runner/certs/cert.crt /usr/local/share/ca-certificates/cert.crt
+    - update-ca-certificates --fresh > /dev/null
+  script:
+    - docker logout
+    - docker login home.kpakozz96pyc.xyz:5000 -u gitlabuser -p gitlabuser_123
+    - ls
+    - docker build --tag mylocalimage:latest .
+    - docker tag mylocalimage:latest home.kpakozz96pyc.xyz:5000/top-store-admin:latest
+    - docker push home.kpakozz96pyc.xyz:5000/top-store-admin:latest
